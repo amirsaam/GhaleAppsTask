@@ -33,6 +33,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68117F132A0E3EBD00BB544B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		68117F142A0E3ED900BB544B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		68117F152A0E3EE700BB544B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		6880416F2A0E3A7400089DC1 = {
 			isa = PBXGroup;
 			children = (
@@ -52,11 +73,14 @@
 		6880417A2A0E3A7400089DC1 /* GATask */ = {
 			isa = PBXGroup;
 			children = (
+				688041812A0E3A7600089DC1 /* GATask.entitlements */,
+				6880417F2A0E3A7600089DC1 /* Assets.xcassets */,
+				688041822A0E3A7600089DC1 /* Preview Content */,
 				6880417B2A0E3A7400089DC1 /* GATaskApp.swift */,
 				6880417D2A0E3A7400089DC1 /* ContentView.swift */,
-				6880417F2A0E3A7600089DC1 /* Assets.xcassets */,
-				688041812A0E3A7600089DC1 /* GATask.entitlements */,
-				688041822A0E3A7600089DC1 /* Preview Content */,
+				68117F132A0E3EBD00BB544B /* Controllers */,
+				68117F142A0E3ED900BB544B /* ViewModels */,
+				68117F152A0E3EE700BB544B /* Views */,
 			);
 			path = GATask;
 			sourceTree = "<group>";
