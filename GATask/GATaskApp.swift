@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+let defaults = UserDefaults.standard
+
 @main
 struct GATaskApp: App {
     var body: some Scene {

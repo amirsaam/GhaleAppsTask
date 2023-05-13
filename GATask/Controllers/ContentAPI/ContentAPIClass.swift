@@ -9,6 +9,4 @@ import Foundation
 
 class ContentAPI {
     public static let shared = ContentAPI()
-    
-    private let authToken = ""
 }
