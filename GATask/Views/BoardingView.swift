@@ -9,41 +9,59 @@ import SwiftUI
 import Neumorphic
 
 struct BoardingView: View {
-    @State private var showLoginModal = false
+    @State private var userLogin = ""
+    @State private var userPass = ""
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 mainColor
                     .edgesIgnoringSafeArea(.all)
-                VStack(spacing: 20) {
+                HStack {
                     Spacer()
-                    Image(systemName: "fleuron.fill")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: geo.size.width * 0.5)
+                    VStack(spacing: 20) {
+                        Spacer()
+                        Group {
+                            Image(systemName: "fleuron.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: geo.size.width * 0.2)
+                            Text("Welcome Back!")
+                                .font(.title.bold().italic())
+                        }
                         .softOuterShadow()
-                    Button {
-                        showLoginModal = true
-                    } label: {
-                        Text("Log In")
-                            .font(.headline.bold())
-                            .textCase(.uppercase)
-                            .frame(width: geo.size.width * 0.7)
+                        VStack(spacing: 10) {
+                            TextField("Username", text: $userLogin)
+                            Divider()
+                            SecureField("Password", text: $userPass)
+                        }
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled(true)
+                        .frame(width: geo.size.width * 0.7)
+                        .padding(.top)
+                        Button {
+                            
+                        } label: {
+                            Text("Login")
+                                .font(.headline.bold())
+                                .textCase(.uppercase)
+                                .frame(width: geo.size.width * 0.65)
+                        }
+                        .softButtonStyle(
+                            RoundedRectangle(cornerRadius: 10),
+                            padding: 8,
+                            pressedEffect: .flat
+                        )
+                        .padding(.top)
+                        Text("Hop into our [Waitlist](https://www.example.com) to gain early access!")
+                            .font(.subheadline)
+                            .padding(.top)
+                        Spacer()
                     }
-                    .softButtonStyle(
-                        RoundedRectangle(cornerRadius: 15),
-                        pressedEffect: .flat
-                    )
-                    .padding(.top)
-                    Text("Got an invite? Login to your account")
                     Spacer()
                 }
             }
+            .foregroundColor(secondaryColor)
         }
-        .sheet(isPresented: $showLoginModal) {
-            LoginView()
-        }
-        .foregroundColor(secondaryColor)
     }
 }
 
