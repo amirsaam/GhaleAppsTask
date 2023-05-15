@@ -20,7 +20,7 @@ struct BoardingView: View {
                     Image(systemName: "fleuron.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: geo.size.width * 0.7)
+                        .frame(width: geo.size.width * 0.5)
                         .softOuterShadow()
                     Button {
                         showLoginModal = true
