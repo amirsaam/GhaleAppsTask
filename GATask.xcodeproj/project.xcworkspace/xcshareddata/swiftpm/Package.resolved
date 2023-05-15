@@ -17,6 +17,15 @@
         "revision" : "03c6f7b3d27bfb28a082db2e9ffae45fbc69cb8b",
         "version" : "2.0.6"
       }
+    },
+    {
+      "identity" : "semaphore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/groue/Semaphore",
+      "state" : {
+        "revision" : "f1c4a0acabeb591068dea6cffdd39660b86dec28",
+        "version" : "0.0.8"
+      }
     }
   ],
   "version" : 2
