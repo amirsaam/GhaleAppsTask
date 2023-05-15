@@ -9,7 +9,7 @@ import SwiftUI
 import Neumorphic
 
 struct BoardingView: View {
-    @State var showLoginModal = false
+    @State private var showLoginModal = false
     var body: some View {
         GeometryReader { geo in
             ZStack {
