@@ -23,9 +23,7 @@ struct BoardingView: View {
                         .frame(width: geo.size.width * 0.7)
                         .softOuterShadow()
                     Button {
-                        withAnimation {
-                            showLoginModal = true
-                        }
+                        showLoginModal = true
                     } label: {
                         Text("Log In")
                             .font(.headline.bold())
