@@ -6,10 +6,40 @@
 //
 
 import SwiftUI
+import Neumorphic
 
 struct BoardingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            ZStack {
+                mainColor
+                    .edgesIgnoringSafeArea(.all)
+                VStack(spacing: 20) {
+                    Spacer()
+                    Image(systemName: "fleuron.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width * 0.7)
+                        .softOuterShadow()
+                    Button {
+                        
+                    } label: {
+                        Text("Log In")
+                            .font(.headline.bold())
+                            .textCase(.uppercase)
+                            .frame(width: geo.size.width * 0.7)
+                    }
+                    .softButtonStyle(
+                        RoundedRectangle(cornerRadius: 15),
+                        pressedEffect: .flat
+                    )
+                    .padding(.top)
+                    Text("Got an invite? Login to your account")
+                    Spacer()
+                }
+            }
+        }
+        .foregroundColor(secondaryColor)
     }
 }
 
