@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68117F192A0E3F8700BB544B /* ContentAPIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68117F182A0E3F8700BB544B /* ContentAPIClass.swift */; };
 		68117F1E2A0E48A900BB544B /* PostedContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68117F1D2A0E48A900BB544B /* PostedContents.swift */; };
+		683F8ECF2A122043002E13B8 /* Neumorphic in Frameworks */ = {isa = PBXBuildFile; productRef = 683F8ECE2A122043002E13B8 /* Neumorphic */; };
 		686048262A0FAD1900023D8D /* BoardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686048252A0FAD1800023D8D /* BoardingView.swift */; };
 		686048282A0FADA200023D8D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686048272A0FADA200023D8D /* LoginView.swift */; };
 		6860482A2A0FADD100023D8D /* DiscoveryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686048292A0FADD100023D8D /* DiscoveryView.swift */; };
@@ -43,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683F8ECF2A122043002E13B8 /* Neumorphic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +151,9 @@
 			dependencies = (
 			);
 			name = GATask;
+			packageProductDependencies = (
+				683F8ECE2A122043002E13B8 /* Neumorphic */,
+			);
 			productName = GATask;
 			productReference = 688041782A0E3A7400089DC1 /* GATask.app */;
 			productType = "com.apple.product-type.application";
@@ -177,6 +182,9 @@
 				Base,
 			);
 			mainGroup = 6880416F2A0E3A7400089DC1;
+			packageReferences = (
+				683F8ECD2A122043002E13B8 /* XCRemoteSwiftPackageReference "neumorphic" */,
+			);
 			productRefGroup = 688041792A0E3A7400089DC1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -434,6 +442,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		683F8ECD2A122043002E13B8 /* XCRemoteSwiftPackageReference "neumorphic" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/costachung/neumorphic/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		683F8ECE2A122043002E13B8 /* Neumorphic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 683F8ECD2A122043002E13B8 /* XCRemoteSwiftPackageReference "neumorphic" */;
+			productName = Neumorphic;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 688041702A0E3A7400089DC1 /* Project object */;
 }
