@@ -9,6 +9,7 @@ import SwiftUI
 import Neumorphic
 
 struct BoardingView: View {
+    @State var showLoginModal = false
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -22,7 +23,9 @@ struct BoardingView: View {
                         .frame(width: geo.size.width * 0.7)
                         .softOuterShadow()
                     Button {
-                        
+                        withAnimation {
+                            showLoginModal = true
+                        }
                     } label: {
                         Text("Log In")
                             .font(.headline.bold())
@@ -38,6 +41,9 @@ struct BoardingView: View {
                     Spacer()
                 }
             }
+        }
+        .sheet(isPresented: $showLoginModal) {
+            LoginView()
         }
         .foregroundColor(secondaryColor)
     }
