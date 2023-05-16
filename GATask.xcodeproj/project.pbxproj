@@ -57,12 +57,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		68117F132A0E3EBD00BB544B /* Controllers */ = {
+		68117F132A0E3EBD00BB544B /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				68117F1B2A0E481A00BB544B /* ContentAPI */,
 			);
-			path = Controllers;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		68117F142A0E3ED900BB544B /* ViewModels */ = {
@@ -127,7 +127,7 @@
 				688041822A0E3A7600089DC1 /* Preview Content */,
 				6880417B2A0E3A7400089DC1 /* GATaskApp.swift */,
 				6880417D2A0E3A7400089DC1 /* ContentView.swift */,
-				68117F132A0E3EBD00BB544B /* Controllers */,
+				68117F132A0E3EBD00BB544B /* Models */,
 				68117F142A0E3ED900BB544B /* ViewModels */,
 				68117F152A0E3EE700BB544B /* Views */,
 			);
