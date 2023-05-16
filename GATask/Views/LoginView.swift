@@ -106,8 +106,8 @@ struct Logo: View {
 }
 
 
-//struct LoginView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginView(showLoginView: true)
-//    }
-//}
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginView(showLoginView: .constant(true))
+    }
+}
