@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var userVM = UserVM.shared
     var body: some View {
-        if let userToken = defaults.string(forKey: "userToken") {
-            
-        } else {
-            BoardingView()
+        Group {
+            if userVM.isLoggedIn {
+                TasteView()
+            } else {
+                BoardingView()
+            }
+        }
+        .task {
+            if let token = userDefaults.string(forKey: "userToken") {
+                userVM.userToken = token
+            }
         }
     }
 }

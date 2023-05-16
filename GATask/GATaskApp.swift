@@ -10,7 +10,7 @@ import Neumorphic
 
 let mainColor = Color.Neumorphic.main
 let secondaryColor = Color.Neumorphic.secondary
-let defaults = UserDefaults.standard
+let userDefaults = UserDefaults.standard
 
 @main
 struct GATaskApp: App {
