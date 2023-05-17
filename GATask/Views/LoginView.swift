@@ -12,7 +12,7 @@ struct LoginView: View {
     @Binding var showLoginView: Bool
     @State private var userLogin = ""
     @State private var userPass = ""
-    let circleRadius: CGFloat = 100
+    @State private var showLoginError = false
     var body: some View {
         GeometryReader { geo in
             ZStack {
@@ -35,13 +35,25 @@ struct LoginView: View {
                         .autocorrectionDisabled(true)
                         .frame(width: geo.size.width * 0.7)
                         .padding(.top)
+                        if showLoginError {
+                            Text("Login failed! Check your details and try again.")
+                                .font(.footnote)
+                                .foregroundColor(.red)
+                                .padding(.top)
+                        }
                         Button {
                             Task {
                                 UserVM.shared.userToken = await ContentAPI.shared.getAuthToken(
                                     username: userLogin,
                                     password: userPass
                                 )
-                                showLoginView = false
+                                if UserVM.shared.userToken != nil {
+                                    showLoginView = false
+                                } else {
+                                    withAnimation {
+                                        showLoginError = true
+                                    }
+                                }
                             }
                         } label: {
                             Text("Login")
@@ -51,13 +63,12 @@ struct LoginView: View {
                         }
                         .softButtonStyle(
                             RoundedRectangle(cornerRadius: 10),
-                            padding: 8,
                             pressedEffect: .flat
                         )
+                        .disabled(userLogin.isEmpty || userPass.isEmpty)
                         .padding(.top)
                         Text("Don't have an account? Join our [Waitlist](https://www.example.com)!")
                             .font(.subheadline)
-                            .padding(.top)
                         Spacer()
                     }
                     Spacer()

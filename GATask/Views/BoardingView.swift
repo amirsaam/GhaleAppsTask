@@ -12,10 +12,9 @@ struct BoardingView: View {
     @State private var showLoginForm = false
     var body: some View {
         GeometryReader { geo in
-            ZStack {
-                mainColor
-                    .edgesIgnoringSafeArea(.all)
-                PathView()
+            PathView()
+            HStack {
+                Spacer()
                 VStack {
                     Spacer()
                     Button {
@@ -34,9 +33,9 @@ struct BoardingView: View {
                         .font(.subheadline)
                         .padding(.top)
                 }
-                .foregroundColor(secondaryColor)
-                .padding(.bottom, 50)
+                Spacer()
             }
+            .padding(.bottom, 50)
         }
         .sheet(isPresented: $showLoginForm) {
             LoginView(showLoginView: $showLoginForm)

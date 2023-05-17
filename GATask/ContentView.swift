@@ -9,19 +9,45 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var userVM = UserVM.shared
+    @State var dataLoaded = false
     var body: some View {
-        Group {
-            if userVM.isLoggedIn {
-                TasteView()
-            } else {
-                BoardingView()
+        mainColor
+            .edgesIgnoringSafeArea(.all)
+            .task(priority: .high) {
+                if let token = userDefaults.string(forKey: "userToken") {
+                    userVM.userToken = token
+                    if userDefaults.bool(forKey: "userChoosedTaste") {
+                        userVM.hasChoosedTaste = true
+                        if let taste = userDefaults.stringArray(forKey: "userChoosentastes") {
+                            userVM.choosenTastes = taste
+                        }
+                    }
+                }
+                withAnimation {
+                    dataLoaded = true
+                }
             }
-        }
-        .task {
-            if let token = userDefaults.string(forKey: "userToken") {
-                userVM.userToken = token
+            .overlay {
+                Group {
+                    if dataLoaded {
+                        if userVM.isLoggedIn {
+                            if userVM.hasChoosedTaste {
+                                DiscoveryView()
+                            } else {
+                                TasteView()
+                            }
+                        } else {
+                            BoardingView()
+                        }
+                    } else {
+                        ProgressView("Loading...")
+                            .controlSize(.large)
+                            .font(.footnote)
+                            .textCase(.uppercase)
+                    }
+                }
+                .foregroundColor(secondaryColor)
             }
-        }
     }
 }
 

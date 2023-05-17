@@ -19,6 +19,8 @@ class UserVM: ObservableObject {
         }
     }
     @Published var isLoggedIn = false
+    @Published var hasChoosedTaste = false
+    @Published var choosenTastes: [String] = []
 
     func testUserToken(_ token: String) -> Bool {
         // should create a test subject to vlidate the token for now we just assume it's valid
