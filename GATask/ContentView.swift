@@ -25,7 +25,7 @@ struct ContentView: View {
                 Group {
                     if dataLoaded {
                         if userVM.isLoggedIn {
-                            if userVM.hasChoosedTaste {
+                            if userVM.hasChoseTaste {
                                 DiscoveryView()
                             } else {
                                 TasteView()

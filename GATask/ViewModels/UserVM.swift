@@ -15,18 +15,18 @@ class UserVM: ObservableObject {
             if let token = userToken {
                 userDefaults.set(token, forKey: "userToken")
                 isLoggedIn = testUserToken(token)
-                hasChoosedTaste = userDefaults.bool(forKey: "userChoosenTastes")
-                if hasChoosedTaste {
-                    if let taste = userDefaults.stringArray(forKey: "userChoosenTastes") {
-                        choosenTastes = taste
+                hasChoseTaste = userDefaults.bool(forKey: "userChoseTaste")
+                if hasChoseTaste {
+                    if let taste = userDefaults.stringArray(forKey: "userChosenTastes") {
+                        chosenTastes = taste
                     }
                 }
             }
         }
     }
     @Published var isLoggedIn = false
-    @Published var hasChoosedTaste = false
-    @Published var choosenTastes: [String] = []
+    @Published var hasChoseTaste = false
+    @Published var chosenTastes: [String] = []
 
     func testUserToken(_ token: String) -> Bool {
         // should create a test subject to vlidate the token for now we just assume it's valid

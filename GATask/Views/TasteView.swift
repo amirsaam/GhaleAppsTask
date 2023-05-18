@@ -10,8 +10,9 @@ import Neumorphic
 import SwiftUIFlowLayout
 
 struct TasteView: View {
+    @ObservedObject private var userVM = UserVM.shared
     @State private var categories: [String] = []
-    @State private var choosedCategories: [String] = []
+    @State private var choseCategories: [String] = []
     var body: some View {
         VStack(spacing: 25) {
             Spacer()
@@ -31,12 +32,12 @@ struct TasteView: View {
                            items: categories,
                            itemSpacing: 8) { data in
                     Button {
-                        if choosedCategories.contains(data) {
-                            choosedCategories.removeAll {
+                        if choseCategories.contains(data) {
+                            choseCategories.removeAll {
                                 $0.contains(data)
                             }
                         } else {
-                            choosedCategories.append(data)
+                            choseCategories.append(data)
                         }
                     } label: {
                         Text(data)
@@ -44,12 +45,12 @@ struct TasteView: View {
                     }
                     .softButtonStyle(
                         RoundedRectangle(cornerRadius: 10),
-                        mainColor: choosedCategories.contains(data) ? .red : mainColor,
-                        textColor: choosedCategories.contains(data) ? .white : secondaryColor,
-                        darkShadowColor: choosedCategories.contains(data)
+                        mainColor: choseCategories.contains(data) ? .red : mainColor,
+                        textColor: choseCategories.contains(data) ? .white : secondaryColor,
+                        darkShadowColor: choseCategories.contains(data)
                         ? .redNeuDS
                         : Color.Neumorphic.darkShadow,
-                        lightShadowColor: choosedCategories.contains(data)
+                        lightShadowColor: choseCategories.contains(data)
                         ? .redNeuLS
                         : Color.Neumorphic.lightShadow,
                         pressedEffect: .flat
@@ -58,7 +59,12 @@ struct TasteView: View {
                 .padding()
             }
             Button {
-                
+                userDefaults.set(choseCategories, forKey: "userChosenTastes")
+                userVM.chosenTastes = choseCategories
+                userDefaults.set(true, forKey: "userChoseTaste")
+                withAnimation {
+                    userVM.hasChoseTaste = true
+                }
             } label: {
                 Text("Continue")
                     .font(.subheadline.bold())
@@ -69,7 +75,7 @@ struct TasteView: View {
                 RoundedRectangle(cornerRadius: 10),
                 pressedEffect: .flat
             )
-            .disabled(choosedCategories.count < 3)
+            .disabled(choseCategories.count < 3)
             Spacer()
         }
         .padding()
