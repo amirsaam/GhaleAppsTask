@@ -43,41 +43,6 @@ struct BoardingView: View {
     }
 }
 
-struct PathView: View {
-    var body: some View {
-       Path { path in
-            let width = UIScreen.main.bounds.width
-            let height = UIScreen.main.bounds.height
-            
-            path.move(to: CGPoint(x: 0, y: height * 0.45))
-            
-            path.addCurve(
-                to: CGPoint(x: width * 0.35, y: height * 0.25),
-                control1: CGPoint(x: width * 0.2, y: height * 0.4),
-                control2: CGPoint(x: width * 0.1, y: height * 0.15)
-            )
-            
-            path.addCurve(
-                to: CGPoint(x: width * 0.7, y: height * 0.2),
-                control1: CGPoint(x: width * 0.6, y: height * 0.325),
-                control2: CGPoint(x: width * 0.45, y: height * 0.1)
-            )
-            
-            path.addCurve(
-                to: CGPoint(x: width, y: height * 0.4),
-                control1: CGPoint(x: width, y: height * 0.35),
-                control2: CGPoint(x: width, y: height * 0.5)
-            )
-            
-            path.addLine(to: CGPoint(x: width, y: height))
-            path.addLine(to: CGPoint(x: 0, y: height))
-            path.closeSubpath()
-        }
-       .stroke(secondaryColor, lineWidth: 4)
-       .softOuterShadow()
-    }
-}
-
 struct BoardingView_Previews: PreviewProvider {
     static var previews: some View {
         BoardingView()

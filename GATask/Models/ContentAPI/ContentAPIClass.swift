@@ -134,7 +134,7 @@ class ContentAPI {
         guard let url = URL(string: baseAPI + apiPath) else { return nil }
         debugPrint("ContentAPI: Trying to fetch data from URL: \(url)")
 
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(accessToken)"]
+        let headers: HTTPHeaders = ["Authorization": accessToken]
 
         AF.request(url,
                    method: .get,
@@ -169,7 +169,7 @@ class ContentAPI {
         guard let url = URL(string: baseAPI + apiPath) else { return nil }
         debugPrint("ContentAPI: Trying to fetch data from URL: \(url)")
         
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(accessToken)", "Content-Type": "application/json"]
+        let headers: HTTPHeaders = ["Authorization": accessToken, "Content-Type": "application/json"]
         
         AF.request(url,
                    method: .post,

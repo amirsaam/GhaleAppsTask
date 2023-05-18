@@ -34,10 +34,7 @@ struct ContentView: View {
                             BoardingView()
                         }
                     } else {
-                        ProgressView("Loading...")
-                            .controlSize(.large)
-                            .font(.footnote)
-                            .textCase(.uppercase)
+                        LoadingView()
                     }
                 }
                 .foregroundColor(secondaryColor)

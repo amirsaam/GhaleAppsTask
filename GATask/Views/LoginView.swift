@@ -79,44 +79,6 @@ struct LoginView: View {
     }
 }
 
-
-struct Logo: View {
-    var body: some View {
-        ZStack {
-            Circle()
-                .fill(secondaryColor)
-                .softOuterShadow()
-            Circle()
-                .fill(mainColor)
-                .mask {
-                    Path { path in
-                        let width = 200.0
-                        let height = 500.0
-                        
-                        path.move(to: CGPoint(x: 0, y: height * 0.1))
-                        
-                        path.addCurve(
-                            to: CGPoint(x: width * 0.55, y: height * 0.06),
-                            control1: CGPoint(x: width * 0.3, y: height * 0.3),
-                            control2: CGPoint(x: width * 0.2, y: 0)
-                        )
-                        
-                        path.addCurve(
-                            to: CGPoint(x: width, y: height * 0.1),
-                            control1: CGPoint(x: width, y: height * 0.15),
-                            control2: CGPoint(x: width, y: height * 0.05)
-                        )
-
-                        path.addLine(to: CGPoint(x: width, y: height))
-                        path.addLine(to: CGPoint(x: 0, y: height))
-                        path.closeSubpath()
-                    }
-                }
-        }
-    }
-}
-
-
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView(showLoginView: .constant(true))
