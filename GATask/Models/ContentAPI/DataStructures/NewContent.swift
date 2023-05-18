@@ -1,14 +1,13 @@
 //
-//  PostedContents.swift
+//  NewContent.swift
 //  GATask
 //
-//  Created by Amir Mohammadi on 2/22/1402 AP.
+//  Created by Amir Mohammadi on 2/28/1402 AP.
 //
 
 import Foundation
 
-struct PostedContents: Codable {
-    let id: Int
+struct NewContent: Codable {
     let title: String
     let author: String
     let category: String
