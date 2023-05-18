@@ -16,12 +16,6 @@ struct ContentView: View {
             .task(priority: .high) {
                 if let token = userDefaults.string(forKey: "userToken") {
                     userVM.userToken = token
-                    if userDefaults.bool(forKey: "userChoosedTaste") {
-                        userVM.hasChoosedTaste = true
-                        if let taste = userDefaults.stringArray(forKey: "userChoosentastes") {
-                            userVM.choosenTastes = taste
-                        }
-                    }
                 }
                 withAnimation {
                     dataLoaded = true

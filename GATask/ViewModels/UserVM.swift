@@ -15,6 +15,12 @@ class UserVM: ObservableObject {
             if let token = userToken {
                 userDefaults.set(token, forKey: "userToken")
                 isLoggedIn = testUserToken(token)
+                hasChoosedTaste = userDefaults.bool(forKey: "userChoosenTastes")
+                if hasChoosedTaste {
+                    if let taste = userDefaults.stringArray(forKey: "userChoosenTastes") {
+                        choosenTastes = taste
+                    }
+                }
             }
         }
     }
