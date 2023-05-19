@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var userVM = UserVM.shared
-    @State var dataLoaded = false
+    @ObservedObject private var userVM = UserVM.shared
+    @State private var dataLoaded = false
     var body: some View {
         mainColor
             .edgesIgnoringSafeArea(.all)

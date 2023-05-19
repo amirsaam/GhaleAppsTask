@@ -11,7 +11,7 @@ import Neumorphic
 struct BoardingView: View {
     @State private var showLoginForm = false
     var body: some View {
-        GeometryReader { geo in
+        ZStack {
             PathView()
             HStack {
                 Spacer()
@@ -23,7 +23,7 @@ struct BoardingView: View {
                         Text("Login")
                             .textCase(.uppercase)
                             .font(.headline.bold())
-                            .frame(width: geo.size.width * 0.65)
+                            .frame(width: uiWidth * 0.65)
                     }
                     .softButtonStyle(
                         RoundedRectangle(cornerRadius: 10),

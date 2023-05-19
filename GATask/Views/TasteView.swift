@@ -48,11 +48,11 @@ struct TasteView: View {
                         mainColor: choseCategories.contains(data) ? .red : mainColor,
                         textColor: choseCategories.contains(data) ? .white : secondaryColor,
                         darkShadowColor: choseCategories.contains(data)
-                        ? .redNeuDS
-                        : Color.Neumorphic.darkShadow,
+                                                            ? .redNeuDS
+                                                            : Color.Neumorphic.darkShadow,
                         lightShadowColor: choseCategories.contains(data)
-                        ? .redNeuLS
-                        : Color.Neumorphic.lightShadow,
+                                                            ? .redNeuLS
+                                                            : Color.Neumorphic.lightShadow,
                         pressedEffect: .flat
                     )
                 }
