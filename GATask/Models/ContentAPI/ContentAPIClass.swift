@@ -85,7 +85,7 @@ class ContentAPI {
 
     func getDetailedContent(accessToken: String, contentID: Int) async -> PostedContent? {
         let returnValue: PostedContent?
-        let path = "content" + String(contentID)
+        let path = "content/" + String(contentID)
         let fetchedData = await fetchDataGet(accessToken: accessToken, apiPath: path, retrurnType: PostedContent.self)
         if let filteredContents = fetchedData {
             returnValue = filteredContents

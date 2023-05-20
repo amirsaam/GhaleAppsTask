@@ -9,10 +9,13 @@ import SwiftUI
 import Neumorphic
 
 struct LoginView: View {
+
     @Binding var showLoginView: Bool
+
     @State private var userLogin = ""
     @State private var userPass = ""
     @State private var showLoginError = false
+
     var body: some View {
         ZStack {
             mainColor

@@ -16,6 +16,7 @@ struct ContentView: View {
             .task(priority: .high) {
                 if let token = userDefaults.string(forKey: "userToken") {
                     userVM.userToken = token
+                    await ContentVM.shared.initialiseContent(authToken: token)
                 }
                 withAnimation {
                     dataLoaded = true
@@ -25,10 +26,12 @@ struct ContentView: View {
                 Group {
                     if dataLoaded {
                         if userVM.isLoggedIn {
-                            if userVM.hasChoseTaste {
-                                DiscoveryView()
-                            } else {
-                                TasteView()
+                            Group {
+                                if userVM.hasChoseTaste {
+                                    DiscoveryView()
+                                } else {
+                                    TasteView()
+                                }
                             }
                         } else {
                             BoardingView()
@@ -38,6 +41,7 @@ struct ContentView: View {
                     }
                 }
                 .foregroundColor(secondaryColor)
+                .accentColor(secondaryColor)
             }
     }
 }

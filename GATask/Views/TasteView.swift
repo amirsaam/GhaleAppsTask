@@ -10,26 +10,29 @@ import Neumorphic
 import SwiftUIFlowLayout
 
 struct TasteView: View {
+
     @ObservedObject private var userVM = UserVM.shared
-    @State private var categories: [String] = []
+    @ObservedObject private var contentVM = ContentVM.shared
+
     @State private var choseCategories: [String] = []
+
     var body: some View {
         VStack(spacing: 25) {
             Spacer()
             VStack(spacing: 10) {
                 Image(systemName: "books.vertical")
                     .font(.largeTitle)
-                Text("Choose at least 3 categories you like to read")
+                Text("Choose categories you like to read about")
                     .font(.subheadline.bold())
             }
-            if categories.isEmpty {
+            if contentVM.allCategories.isEmpty {
                 Spacer()
                 LoadingView()
                     .padding()
                 Spacer()
             } else {
                 FlowLayout(mode: .vstack,
-                           items: categories,
+                           items: contentVM.allCategories,
                            itemSpacing: 8) { data in
                     Button {
                         if choseCategories.contains(data) {
@@ -59,11 +62,23 @@ struct TasteView: View {
                 .padding()
             }
             Button {
-                userDefaults.set(choseCategories, forKey: "userChosenTastes")
-                userVM.chosenTastes = choseCategories
-                userDefaults.set(true, forKey: "userChoseTaste")
-                withAnimation {
-                    userVM.hasChoseTaste = true
+                Task {
+                    userDefaults.set(choseCategories, forKey: "userChosenTastes")
+                    userVM.chosenTastes = choseCategories
+                    userDefaults.set(true, forKey: "userChoseTaste")
+                    if let token = userVM.userToken {
+                        if let contents = await ContentAPI.shared.getAllContents(accessToken: token) {
+                            contentVM.allContents = contents
+                            contents.forEach { entry in
+                                if userVM.chosenTastes.contains(entry.category) {
+                                    contentVM.followedContent.append(entry)
+                                }
+                            }
+                        }
+                    }
+                    withAnimation {
+                        userVM.hasChoseTaste = true
+                    }
                 }
             } label: {
                 Text("Continue")
@@ -75,14 +90,14 @@ struct TasteView: View {
                 RoundedRectangle(cornerRadius: 10),
                 pressedEffect: .flat
             )
-            .disabled(choseCategories.count < 3)
+            .disabled(choseCategories.isEmpty)
             Spacer()
         }
         .padding()
-        .task {
+        .task(priority: .high) {
             if let token = UserVM.shared.userToken {
                 if let data = await ContentAPI.shared.getCategoriesList(accessToken: token) {
-                    categories = data
+                    contentVM.allCategories = data
                 }
             }
         }

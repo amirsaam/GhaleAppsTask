@@ -41,9 +41,8 @@ struct PathView: View {
                 control2: CGPoint(x: uiWidth, y: uiHeight * 0.5)
             )
             
-            path.addLine(to: CGPoint(x: uiWidth, y: uiHeight))
-            path.addLine(to: CGPoint(x: 0, y: uiHeight))
-            path.closeSubpath()
+//            path.addLine(to: CGPoint(x: uiWidth, y: uiHeight))
+//            path.addLine(to: CGPoint(x: 0, y: uiHeight))
         }
        .stroke(secondaryColor, lineWidth: 4)
        .softOuterShadow()

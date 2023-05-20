@@ -9,7 +9,9 @@ import SwiftUI
 import Neumorphic
 
 struct BoardingView: View {
+
     @State private var showLoginForm = false
+
     var body: some View {
         ZStack {
             PathView()
