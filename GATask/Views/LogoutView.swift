@@ -47,6 +47,7 @@ struct LogoutView: View {
                             userDefaults.set(false, forKey: "userChoseTaste")
                             let emptyArray: [String] = []
                             userDefaults.set(emptyArray, forKey: "userChosenTastes")
+                            ContentVM.shared.followedContent = []
                         }
                         withAnimation {
                             UserVM.shared.isLoggedIn = false
