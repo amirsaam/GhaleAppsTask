@@ -79,6 +79,12 @@ struct DetailedView: View {
                                                 contentID: content.id
                                             ) {
                                                 content = data
+                                                if let element = contentVM.allContents?.firstIndex(
+                                                    where: { $0.id == data.id }
+                                                ) {
+                                                    contentVM.allContents?[element] = data
+                                                    contentVM.updateFollowedContents()
+                                                }
                                             }
                                         }
                                     }
