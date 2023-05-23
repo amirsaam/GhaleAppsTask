@@ -92,8 +92,10 @@ struct EntriesListView: View {
                 }
                 .listStyle(.plain)
                 .refreshable {
-                    contentVM.followedContent = []
+                    contentVM.allContents?.removeAll()
+                    contentVM.followedContent.removeAll()
                     await contentVM.initialiseContent(authToken: UserVM.shared.userToken ?? "")
+                    contentVM.updateFollowedContents()
                 }
             } else {
                 LoadingView()
